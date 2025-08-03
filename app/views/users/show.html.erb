@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
-<%= render @user.microposts.first%>
+<% if @user.microposts.any? %>
+  <%= render @user.microposts.first %>
+<% else %>
+  <p>まだ投稿がありません。</p>
+<% end %>
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
